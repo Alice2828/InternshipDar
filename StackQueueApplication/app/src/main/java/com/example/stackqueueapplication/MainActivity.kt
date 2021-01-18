@@ -23,16 +23,20 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.pushStack).setOnClickListener {
             if (editText.text.isEmpty())
                 Toast.makeText(this@MainActivity, "Empty editText", Toast.LENGTH_LONG).show()
-            else obj.push(editText.text.toString().toInt())
+            else {
+                obj.push(editText.text.toString().toInt())
+                Toast.makeText(this@MainActivity, "added to Stack", Toast.LENGTH_LONG).show()
+            }
             editText.setText("")
         }
+
         findViewById<Button>(R.id.popStack).setOnClickListener {
             try {
                 textView.text = obj.pop().toString()
+                Toast.makeText(this@MainActivity, "Popped Stack", Toast.LENGTH_LONG).show()
 
             } catch (e: Exception) {
-                Toast.makeText(this@MainActivity, "Empty Stack", Toast.LENGTH_LONG).show()
-                textView.text = ""
+                textView.text = "Empty Stack"
             }
 
         }
@@ -41,9 +45,7 @@ class MainActivity : AppCompatActivity() {
                 textView.text = obj.top().toString()
 
             } catch (e: Exception) {
-                Toast.makeText(this@MainActivity, "Empty Stack", Toast.LENGTH_LONG).show()
-                textView.text = ""
-
+                textView.text = "Empty Stack"
             }
         }
         findViewById<Button>(R.id.emptyStack).setOnClickListener {
@@ -56,18 +58,20 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.pushQueue).setOnClickListener {
             if (editText.text.isEmpty())
                 Toast.makeText(this@MainActivity, "Empty editText", Toast.LENGTH_LONG).show()
-            else obj2.push(editText.text.toString().toInt())
+            else {
+                obj2.push(editText.text.toString().toInt())
+                Toast.makeText(this@MainActivity, "added to Queue", Toast.LENGTH_LONG).show()
+            }
             editText.setText("")
 
         }
         findViewById<Button>(R.id.popQueue).setOnClickListener {
             try {
                 textView.text = obj2.pop().toString()
+                Toast.makeText(this@MainActivity, "Popped Queue", Toast.LENGTH_LONG).show()
 
             } catch (e: Exception) {
-                Toast.makeText(this@MainActivity, "Empty Queue", Toast.LENGTH_LONG).show()
-                textView.text = ""
-
+                textView.text = "Empty Queue"
             }
         }
         findViewById<Button>(R.id.peekQueue).setOnClickListener {
@@ -75,8 +79,7 @@ class MainActivity : AppCompatActivity() {
                 textView.text = obj2.peek().toString()
 
             } catch (e: Exception) {
-                Toast.makeText(this@MainActivity, "Empty Queue", Toast.LENGTH_LONG).show()
-                textView.text = ""
+                textView.text = "Empty Queue"
 
             }
         }
