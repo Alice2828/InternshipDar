@@ -6,13 +6,127 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toTopOf="@id/textView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:imeOptions="actionGo"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toTopOf="@id/pushStack"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <Button
+        android:id="@+id/pushStack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="100dp"
+        android:padding="10dp"
+        android:text="Push to Stack"
+        app:layout_constraintBottom_toTopOf="@id/popStack"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@id/pushQueue"
+        app:layout_constraintTop_toBottomOf="@id/editText" />
+
+    <Button
+        android:id="@+id/popStack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="100dp"
+        android:text="Pop Stack"
+
+        app:layout_constraintBottom_toTopOf="@id/topStack"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@id/popQueue"
+        app:layout_constraintTop_toBottomOf="@id/pushStack" />
+
+    <Button
+        android:id="@+id/topStack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="100dp"
+        android:text="Top Stack"
+
+        app:layout_constraintBottom_toTopOf="@id/emptyStack"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@id/peekQueue"
+        app:layout_constraintTop_toBottomOf="@id/popStack" />
+
+    <Button
+        android:id="@+id/emptyStack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="100dp"
+        android:text="isEmpty Stack"
+        android:padding="10dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@id/emptyQueue"
+        app:layout_constraintTop_toBottomOf="@id/topStack" />
+
+    <Button
+        android:id="@+id/pushQueue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:text="Push to Queue"
+        android:padding="10dp"
+
+        app:layout_constraintBottom_toTopOf="@id/popQueue"
+        app:layout_constraintLeft_toLeftOf="@id/pushStack"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editText" />
+
+
+    <Button
+        android:id="@+id/popQueue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:text="Pop Queue"
+
+        app:layout_constraintBottom_toTopOf="@id/peekQueue"
+        app:layout_constraintLeft_toLeftOf="@id/popStack"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pushQueue" />
+
+    <Button
+        android:id="@+id/peekQueue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:text="Peek Queue"
+
+        app:layout_constraintBottom_toTopOf="@id/emptyQueue"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintLeft_toLeftOf="@id/topStack"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/popQueue" />
+
+    <Button
+        android:id="@+id/emptyQueue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="100dp"
+        android:text="isEmpty Queue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/emptyStack"
+        app:layout_constraintRight_toRightOf="parent"
+        android:padding="10dp"
+
+        app:layout_constraintTop_toBottomOf="@id/peekQueue" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
