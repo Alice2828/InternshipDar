@@ -4,31 +4,32 @@ import java.util.*
 
 class MyQueue {
     var myStack: Stack<Int> = Stack()
-
+    lateinit var stackSecond: Stack<Int>
     /** Initialize your data structure here. */
 
 
     /** Push element x to the back of queue. */
     fun push(x: Int) {
         myStack.push(x)
+        stackSecond = Stack()
+        for (i in myStack.size-1 downTo 0) {
+            stackSecond.add(myStack[i])
+        }
     }
 
     /** Removes the element from in front of queue and returns that element. */
     fun pop(): Int {
-        val pop = myStack.firstElement()
-        myStack.remove(myStack[0])
-        return pop
+        return stackSecond.pop()
     }
 
     /** Get the front element. */
     fun peek(): Int {
-        return myStack.firstElement()
+        return stackSecond.peek()
     }
 
     /** Returns whether the queue is empty. */
     fun empty(): Boolean {
-        return myStack.isEmpty()
-
+        return myStack.empty()
     }
 
 }
