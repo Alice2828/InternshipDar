@@ -3,13 +3,14 @@ package com.example.stackqueueapplication
 import java.util.*
 
 class MyQueue {
-    var myStack: Stack<Int> = Stack()
+
     lateinit var stackSecond: Stack<Int>
     /** Initialize your data structure here. */
 
 
     /** Push element x to the back of queue. */
     fun push(x: Int) {
+        var myStack: Stack<Int> = Stack()
         myStack.push(x)
         stackSecond = Stack()
         for (i in myStack.size-1 downTo 0) {
@@ -29,7 +30,7 @@ class MyQueue {
 
     /** Returns whether the queue is empty. */
     fun empty(): Boolean {
-        return myStack.empty()
+        return stackSecond.empty()
     }
 
 }
