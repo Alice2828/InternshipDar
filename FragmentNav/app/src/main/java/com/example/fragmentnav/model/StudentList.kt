@@ -4,7 +4,7 @@ object StudentList {
     private var studentList = mutableSetOf<Student>()
 
      fun createStudentsList() {
-        for (i in 0..10) {
+        for (i in 1..10) {
             studentList.add(Student(i, "Name$i", "Surname$i", i.toDouble(), ""))
         }
     }

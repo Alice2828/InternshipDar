@@ -1,7 +1,9 @@
 package com.example.fragmentnav.model
 
 import android.os.Parcelable
+import android.util.Base64
 import kotlinx.android.parcel.Parcelize
+
 import java.util.*
 
 @Parcelize

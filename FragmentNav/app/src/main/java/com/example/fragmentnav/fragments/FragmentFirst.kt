@@ -17,7 +17,9 @@ import com.example.fragmentnav.R
 import com.example.fragmentnav.model.Student
 import com.example.fragmentnav.adapter.MyAdapter
 import com.example.fragmentnav.detailInterface.ItemClickListener
+import com.example.fragmentnav.model.DeletedHistory
 import com.example.fragmentnav.model.StudentList
+import java.lang.Exception
 
 class FragmentFirst : Fragment() {
     var studentList = mutableSetOf<Student>()
@@ -25,6 +27,7 @@ class FragmentFirst : Fragment() {
     private lateinit var viewAdapter: MyAdapter
     private lateinit var viewManager: LinearLayoutManager
     private var listener: ItemClickListener? = null
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +39,13 @@ class FragmentFirst : Fragment() {
         createDetailsListener(rootView)
         rvInit(rootView)
         implementAdd(rootView)
+        implementRestore(rootView)
+        swipeRefreshLayout = rootView.findViewById(R.id.swipe)
+        swipeRefreshLayout.setOnRefreshListener {
+            swipeRefreshLayout.isRefreshing = true
+            swipeRefreshLayout.isRefreshing = false
+
+        }
         return rootView
     }
 
@@ -82,10 +92,23 @@ class FragmentFirst : Fragment() {
                     )
                 )
                 viewAdapter.submitList(studentList)
-                rootView.findViewById<SwipeRefreshLayout>(R.id.swipe).isRefreshing = true
-                rootView.findViewById<SwipeRefreshLayout>(R.id.swipe).isRefreshing = false
+                swipeRefreshLayout.isRefreshing = true
+                swipeRefreshLayout.isRefreshing = false
+
             }
         }
+    }
+
+    private fun implementRestore(rootView: View) {
+        rootView.findViewById<Button>(R.id.restore).setOnClickListener {
+            try {
+                studentList.add(DeletedHistory.restoreDeleted())
+                viewAdapter.submitList(studentList)
+            } catch (e: Exception) {
+                Toast.makeText(context, "Empty history", Toast.LENGTH_LONG).show()
+            }
+        }
+
     }
 
 }

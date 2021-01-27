@@ -24,6 +24,9 @@ class FragmentSecond : Fragment() {
         rootView.findViewById<TextView>(R.id.surname).text = student.surname
         rootView.findViewById<TextView>(R.id.grade).text = student.grade.toString()
 
+        /*val imageBytes= Base64.decode(stImage, Base64.DEFAULT).toString()
+        val decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length)
+        imageView.setImageBitmap(decodedImage)*/
         return rootView
     }
 

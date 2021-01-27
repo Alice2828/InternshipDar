@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fragmentnav.R
 import com.example.fragmentnav.detailInterface.ItemClickListener
+import com.example.fragmentnav.model.DeletedHistory
 import com.example.fragmentnav.model.Student
 
 class MyAdapter(val listener: ItemClickListener) :
@@ -49,6 +50,7 @@ class MyAdapter(val listener: ItemClickListener) :
     }
 
     fun removeAt(position: Int) {
+        DeletedHistory.addDeleted(studentList.elementAt(position))
         studentList.remove(studentList.elementAt(position))
         notifyItemRemoved(position)
         notifyItemRangeChanged(position, studentList.size)
