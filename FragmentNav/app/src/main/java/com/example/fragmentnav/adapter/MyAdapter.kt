@@ -10,6 +10,7 @@ import com.example.fragmentnav.R
 import com.example.fragmentnav.detailInterface.ItemClickListener
 import com.example.fragmentnav.model.DeletedHistory
 import com.example.fragmentnav.model.Student
+import com.example.fragmentnav.model.StudentList
 
 class MyAdapter(val listener: ItemClickListener) :
     RecyclerView.Adapter<MyAdapter.RepoViewHolder>() {

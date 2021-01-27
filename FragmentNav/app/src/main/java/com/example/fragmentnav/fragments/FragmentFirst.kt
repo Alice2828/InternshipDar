@@ -1,5 +1,6 @@
 package com.example.fragmentnav.fragments
 
+import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -23,6 +24,7 @@ import java.lang.Exception
 
 class FragmentFirst : Fragment() {
     var studentList = mutableSetOf<Student>()
+    private var lastPosition: Int = 0
     private lateinit var myRecyclerView: RecyclerView
     private lateinit var viewAdapter: MyAdapter
     private lateinit var viewManager: LinearLayoutManager
@@ -40,12 +42,7 @@ class FragmentFirst : Fragment() {
         rvInit(rootView)
         implementAdd(rootView)
         implementRestore(rootView)
-        swipeRefreshLayout = rootView.findViewById(R.id.swipe)
-        swipeRefreshLayout.setOnRefreshListener {
-            swipeRefreshLayout.isRefreshing = true
-            swipeRefreshLayout.isRefreshing = false
-
-        }
+        swipeFunction(rootView)
         return rootView
     }
 
@@ -55,6 +52,8 @@ class FragmentFirst : Fragment() {
         //linearLayoutManager for rv
         viewManager = LinearLayoutManager(context)
         myRecyclerView.layoutManager = viewManager
+        findLastPosition()
+        saveScrollRv()
         val dividerItemDecoration = DividerItemDecoration(
             myRecyclerView.context,
             viewManager.orientation
@@ -64,6 +63,8 @@ class FragmentFirst : Fragment() {
         viewAdapter = listener?.let { MyAdapter(it) }!!
 
         myRecyclerView.adapter = viewAdapter
+//        viewAdapter.stateRestorationPolicy =
+//            RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         viewAdapter.submitList(studentList)
     }
 
@@ -82,15 +83,17 @@ class FragmentFirst : Fragment() {
             if (nameText.text.isEmpty()) {
                 Toast.makeText(context, "Empty name", Toast.LENGTH_LONG).show()
             } else {
+                StudentList.increaseCounter()
                 StudentList.addStudent(
                     Student(
-                        StudentList.getStudentList().size,
+                        StudentList.getCounter(),
                         nameText.text.toString(),
                         null,
                         null,
                         null
                     )
                 )
+                nameText.setText("")
                 viewAdapter.submitList(studentList)
                 swipeRefreshLayout.isRefreshing = true
                 swipeRefreshLayout.isRefreshing = false
@@ -111,4 +114,39 @@ class FragmentFirst : Fragment() {
 
     }
 
+    private fun saveScrollRv() {
+
+        myRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                lastPosition = viewManager.findLastVisibleItemPosition()
+            }
+        })
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val getPrefs = context?.getSharedPreferences("scroll", MODE_PRIVATE)
+        val editor = getPrefs?.edit()
+        editor?.putInt("lastPos", lastPosition)
+        editor?.apply()
+    }
+
+    private fun findLastPosition() {
+        val getPrefs = context?.getSharedPreferences("scroll", MODE_PRIVATE)
+        if (getPrefs != null) {
+            lastPosition = getPrefs.getInt("lastPos", 0)
+        }
+        myRecyclerView.scrollToPosition(lastPosition)
+    }
+
+    private fun swipeFunction(rootView: View) {
+        swipeRefreshLayout = rootView.findViewById(R.id.swipe)
+        swipeRefreshLayout.setOnRefreshListener {
+            swipeRefreshLayout.isRefreshing = true
+            swipeRefreshLayout.isRefreshing = false
+
+        }
+    }
 }
