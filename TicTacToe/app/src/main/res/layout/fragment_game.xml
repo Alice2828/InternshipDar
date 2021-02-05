@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".GameFragment">
+
+    <TextView
+        android:id="@+id/turn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="Start"
+        android:textSize="30dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp">
+
+        <ImageView
+            android:id="@+id/box1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/border"
+            android:src="@drawable/blank"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/box2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/blank"
+            android:background="@drawable/border"
+            app:layout_constraintLeft_toRightOf="@+id/box1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/box3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/blank"
+            android:background="@drawable/border"
+            app:layout_constraintLeft_toRightOf="@+id/box2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/box4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/blank"
+            android:background="@drawable/border"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/box1" />
+
+        <ImageView
+            android:id="@+id/box5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/border"
+            android:src="@drawable/blank"
+            app:layout_constraintLeft_toRightOf="@+id/box4"
+            app:layout_constraintTop_toBottomOf="@+id/box2" />
+
+        <ImageView
+            android:id="@+id/box6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/blank"
+            android:background="@drawable/border"
+            app:layout_constraintLeft_toRightOf="@+id/box5"
+            app:layout_constraintTop_toBottomOf="@+id/box3" />
+
+        <ImageView
+            android:id="@+id/box7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/blank"
+            android:background="@drawable/border"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/box4" />
+
+        <ImageView
+            android:id="@+id/box8"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/blank"
+            android:background="@drawable/border"
+            app:layout_constraintLeft_toRightOf="@+id/box7"
+            app:layout_constraintTop_toBottomOf="@+id/box5" />
+
+        <ImageView
+            android:id="@+id/box9"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/border"
+            android:src="@drawable/blank"
+            app:layout_constraintLeft_toRightOf="@+id/box8"
+            app:layout_constraintTop_toBottomOf="@+id/box6" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

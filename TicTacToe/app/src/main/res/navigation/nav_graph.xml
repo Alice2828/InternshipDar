@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startFragment">
+
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.example.tictactoe.StartFragment"
+        android:label="StartFragment">
+        <action
+            android:id="@+id/action_start_to_new"
+            app:destination="@id/newFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_in_left"/>
+        <action
+            android:id="@+id/action_start_to_records"
+            app:destination="@id/recordFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_in_left"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/newFragment"
+        android:name="com.example.tictactoe.NewGameFragment"
+        android:label="NewFragment">
+
+        <action
+            android:id="@+id/action_new_to_game"
+            app:destination="@id/gameFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_in_left">
+            <argument
+                android:name="userName1"
+                app:argType="string" />
+            <argument
+                android:name="userName2"
+                app:argType="string" />
+        </action>
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.tictactoe.GameFragment"
+        android:label="GameFragment">
+
+        <action
+            android:id="@+id/action_game_to_records"
+            app:destination="@id/recordFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_in_left" />
+        <argument
+            android:name="userName1"
+            app:argType="string" />
+        <argument
+            android:name="userName2"
+            app:argType="string" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/recordFragment"
+        android:name="com.example.tictactoe.RecordsFragment"
+        android:label="RecordFragment">
+        <action
+            android:id="@+id/action_record_to_start"
+            app:destination="@id/startFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_in_left"/>
+    </fragment>
+
+
+</navigation>
