@@ -63,8 +63,6 @@ class FragmentFirst : Fragment() {
         viewAdapter = listener?.let { MyAdapter(it) }!!
 
         myRecyclerView.adapter = viewAdapter
-//        viewAdapter.stateRestorationPolicy =
-//            RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         viewAdapter.submitList(studentList)
     }
 

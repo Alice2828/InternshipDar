@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.second).setOnClickListener {
             val intent = Intent(this@MainActivity, SecondActivity::class.java)
             val bundle = Bundle()
+
             bundle.putParcelableArrayList("studentList", studentList)
             intent.putExtras(bundle)
             startActivity(intent)
