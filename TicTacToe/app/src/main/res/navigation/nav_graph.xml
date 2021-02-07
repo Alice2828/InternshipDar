@@ -59,7 +59,14 @@
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right"
             app:popEnterAnim="@android:anim/slide_out_right"
-            app:popExitAnim="@android:anim/slide_in_left" />
+            app:popExitAnim="@android:anim/slide_in_left" >
+        <argument
+            android:name="userName1"
+            app:argType="string" />
+        <argument
+            android:name="userName2"
+            app:argType="string" />
+        </action>
         <argument
             android:name="userName1"
             app:argType="string" />
@@ -80,7 +87,9 @@
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right"
             app:popEnterAnim="@android:anim/slide_out_right"
-            app:popExitAnim="@android:anim/slide_in_left"/>
+            app:popExitAnim="@android:anim/slide_in_left"
+            app:popUpTo="@+id/nav_graph"
+            app:popUpToInclusive="true"/>
     </fragment>
 
 

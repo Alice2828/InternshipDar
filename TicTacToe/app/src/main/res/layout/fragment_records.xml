@@ -85,12 +85,9 @@
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:gravity="center"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="6dp"
         android:text="Main page"
         android:textSize="25dp" />
 

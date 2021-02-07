@@ -22,7 +22,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
         android:gravity="center"
-        android:hint="User1"
+        android:hint="User1 - X"
         android:inputType="text"
         android:textSize="30dp" />
 
@@ -33,7 +33,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="60dp"
         android:gravity="center"
-        android:hint="User2"
+        android:hint="User2 - O"
         android:inputType="text"
         android:textSize="30dp" />
 

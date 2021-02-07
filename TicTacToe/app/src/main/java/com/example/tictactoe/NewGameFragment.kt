@@ -9,6 +9,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.findNavController
+import com.example.tictactoe.model.User
+import com.example.tictactoe.model.UserList
 
 class NewGameFragment : Fragment() {
     private lateinit var play: Button
@@ -24,11 +26,16 @@ class NewGameFragment : Fragment() {
         play = rootView.findViewById(R.id.play)
         user1 = rootView.findViewById(R.id.user1)
         user2 = rootView.findViewById(R.id.user2)
-        play.setOnClickListener{
-            if(user1.text.isEmpty() || user2.text.isEmpty()){
-                Toast.makeText(context, "You should write nemes", Toast.LENGTH_LONG).show()
-            }
-            else{
+        play.setOnClickListener {
+            if (user1.text.isEmpty() || user2.text.isEmpty()) {
+                Toast.makeText(context, "You should write names", Toast.LENGTH_LONG).show()
+            } else if (user1.text.toString() == user2.text.toString()) {
+                Toast.makeText(context, "Names should be different", Toast.LENGTH_LONG).show()
+            } else {
+                if (!UserList.getUserList().contains(User(user1.text.toString())))
+                    UserList.addUser(User(user1.text.toString()))
+                if (!UserList.getUserList().contains(User(user2.text.toString())))
+                    UserList.addUser(User(user2.text.toString()))
                 val action = NewGameFragmentDirections.actionNewToGame(user1.text.toString(), user2.text.toString())
                 rootView.findNavController().navigate(action)
             }
